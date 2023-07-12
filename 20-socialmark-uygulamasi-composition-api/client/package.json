@@ -1,0 +1,24 @@
+{
+  "name": "20-socialmark-uygulamasi-composition-api",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "crypto-js": "^4.1.1",
+    "pinia": "^2.0.14",
+    "pinia-plugin-persistedstate": "^1.6.1",
+    "secure-ls": "^1.2.6",
+    "socket.io-client": "^4.5.1",
+    "vue": "^3.2.37",
+    "vue-cryptojs": "^2.3.0",
+    "vue-router": "^4.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.14"
+  }
+}

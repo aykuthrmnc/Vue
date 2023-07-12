@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-white">
+    <div id="app">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2 card p-2 text-dark text-center">
+                    <h3>{{counter}}</h3>
+                    <div class="d-flex align-items-center justify-content-center gap-2">
+                        <button class="btn btn-primary btn-sm" @click="counter++">+</button>
+                        <button class="btn btn-danger btn-sm" @click="counter--">-</button>
+                    </div>
+                    <div class="alert alert-warning mt-2">{{ getCounterResult }}</div>
+                </div>
+                <div class="col-2 card p-2 text-dark text-center me-2">
+                    <h3>{{counter2}}</h3>
+                    <div class="d-flex align-items-center justify-content-center gap-2">
+                        <button class="btn btn-primary btn-sm" @click="counter2++">+</button>
+                        <button class="btn btn-danger btn-sm" @click="counter2--">-</button>
+                    </div>
+                    <div class="alert alert-warning mt-2">{{ getCounter2Result }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.min.js"></script> -->
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    counter: 0,
+                    counter2: 0,
+                }
+            },
+            methods: {
+
+            },
+            computed: { // Icindeki deger degistiginde calisir
+                getCounterResult() {
+                    console.log("Counter 1 Çalıştı");
+                    return this.counter > 5 ? "Büyük" : "Küçük";
+                },
+                getCounter2Result() {
+                    console.log("Counter 2 Çalıştı");
+                    return this.counter2 > 5 ? "Büyük" : "Küçük";
+                }
+            },
+            watch: { // Deger degistiginde calisir
+                counter(newValue, oldValue) {
+                    console.log(oldValue, "=>", newValue);
+                },
+                getCounterResult(newValue, oldValue) {
+                    console.log("RESULT: ", oldValue, "=>", newValue);
+                },
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

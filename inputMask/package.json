@@ -1,0 +1,25 @@
+{
+  "name": "inputmask",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "i18next": "^21.9.1",
+    "i18next-browser-languagedetector": "^6.1.5",
+    "i18next-vue": "^2.0.0-beta.3",
+    "primeicons": "^5.0.0",
+    "primevue": "^3.17.0",
+    "sass": "^1.54.9",
+    "vee-validate": "^4.7.0",
+    "vue": "^3.2.38",
+    "vue-paycard": "^0.7.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "vite": "^3.0.9"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container-fluid">
+        <div id="app">
+            <p>
+                Ask a yes/no question:
+                <input v-model="question" @keyup.enter="getAnswer" />
+            </p>
+            <img :src="answer">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    question: '',
+                    answer: 'Questions usually contain a question mark. ;-)'
+                }
+            },
+            // watch: {
+            //     // whenever question changes, this function will run
+            //     question(newQuestion, oldQuestion) {
+            //         if (newQuestion.indexOf('?') > -1) {
+            //             this.getAnswer()
+            //         }
+            //     }
+            // },
+            methods: {
+                async getAnswer() {
+                    this.answer = 'Thinking...'
+                    try {
+                        const res = await fetch('https://yesno.wtf/api')
+                        this.answer = (await res.json()).image
+                    } catch (error) {
+                        this.answer = 'Error! Could not reach the API. ' + error
+                    }
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

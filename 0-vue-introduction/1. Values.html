@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Values</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container-fluid">
+        <div id="app">
+            <h1>{{firstName}}</h1>
+            <p>{{lastName}}</p>
+            <!-- v-bind -> : -->
+            <!-- v-on -> @ -->
+            <a :href="url">Linke Tıkla</a>
+            <div>
+                <button class="btn btn-primary" @click="increment">{{ count }}</button>
+                <button class="btn btn-primary" @click="count2++">{{ count2 }}</button>
+            </div>
+            <p>Using v-html directive: <b v-html="rawHtml"></b></p>
+            <div :id="dynamicId">Dynamic ID</div>
+            <div v-bind="attrs">Attributes</div>
+            <div>
+                <button class="btn btn-primary" @click="changeValue">Change {{ dynamicValue }}</button>
+                <span v-if="dynamicValue">If(true)</span>
+            </div>
+            <div v-bind="obj">{{obj.nested.count}} {{obj.arr[1]}}</div>
+            <div>{{dateNow}}</div>
+            <div>{{fullName = "Aykut Hrmnc"}}</div>
+            <div class="bg-light" :class="{'text-danger': isActive}">Binding to Objects</div>
+            <div :class="classObject">Binding to Objects</div>
+            <h1 v-show="false">Hello!</h1>
+            <ul>
+                <li v-for="(item, index) in items">{{index}} - {{item}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    firstName: "Aykut",
+                    lastName: "Hrmnc",
+                    url: "https://www.google.com",
+                    count: 0,
+                    count2: 0,
+                    rawHtml: "12345",
+                    dynamicId: "Id",
+                    attrs: {
+                        id: "attr1",
+                        class: "text-danger"
+                    },
+                    dynamicValue: false,
+                    obj: {
+                        nested: { count: 0 },
+                        arr: ['foo', 'bar']
+                    },
+                    isActive: true,
+                    classObject: {
+                        'text-warning': true,
+                        'bg-primary': false
+                    },
+                    items: ["A", "B", "C"]
+                }
+            },
+            methods: {
+                increment() {
+                    this.count++;
+                },
+                changeValue() {
+                    this.dynamicValue = !this.dynamicValue
+                },
+                mutateDeeply() {
+                    this.obj.nested.count++
+                    this.obj.arr.push('baz')
+                },
+            },
+            computed: {
+                dateNow() {
+                    return Date.now()
+                },
+                fullName: {
+                    get() {
+                        return this.firstName + " " + this.lastName
+                    },
+                    set(newFullName) {
+                        [this.firstName, this.lastName] = newFullName.split(" ")
+                    }
+                }
+            },
+            mounted() {
+                this.count2++;
+                console.log(this.count2);
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

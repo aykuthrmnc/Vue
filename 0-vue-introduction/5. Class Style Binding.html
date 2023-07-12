@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Style Bindings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #dedede;
+        }
+
+        .border {
+            border: 3px dashed #666 !important;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="bgColor">
+        <button @click="boxClasses.border = !boxClasses.border">Border Ekle/Çıkar</button>
+        <button @click="boxClasses.red = !boxClasses.red">Kırmızı Ekle/Çıkar</button>
+        <div class="box" :class="boxClasses" :style="{backgroundColor: bgColor}"></div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.min.js"></script> -->
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    showBorder: "false",
+                    boxClasses: {
+                        border: false,
+                        red: false
+                    },
+                    bgColor: "cyan"
+                }
+            },
+            computed: {
+                boxClasses() {
+                    return { border: this.border, red: this.red }
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

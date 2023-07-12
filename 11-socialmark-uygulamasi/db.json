@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "username": "aykuthrmnc",
+      "fullname": "Aykut Harmancı",
+      "password": "682d0c21835b9cb5cbdbb71076c7846dccd42b44",
+      "id": 1
+    },
+    {
+      "username": "aykuth",
+      "fullname": "Aykut Harmancı",
+      "password": "682d0c21835b9cb5cbdbb71076c7846dccd42b44",
+      "id": 2,
+      "likes": [],
+      "bookmarks": []
+    }
+  ],
+  "user_likes": [],
+  "user_bookmarks": [],
+  "bookmarks": [
+    {
+      "title": "Vue Döküman",
+      "url": "https://vuejs.org/",
+      "categoryId": 1,
+      "description": "Framework :)",
+      "userId": 2,
+      "createdAt": "2022-07-13T19:55:19.507Z",
+      "id": 1
+    },
+    {
+      "title": "React Döküman",
+      "url": "https://tr.reactjs.org/",
+      "categoryId": 2,
+      "description": "React :)",
+      "userId": 2,
+      "createdAt": "2022-07-13T20:08:31.958Z",
+      "id": 2
+    },
+    {
+      "title": "Html",
+      "url": "html.org",
+      "categoryId": 3,
+      "description": "html :(",
+      "userId": 2,
+      "createdAt": "2022-07-13T20:11:57.644Z",
+      "id": 3
+    },
+    {
+      "title": "Asp.Net Core",
+      "url": "microsoft.com",
+      "categoryId": 4,
+      "description": ":/",
+      "userId": 2,
+      "createdAt": "2022-07-13T20:13:35.171Z",
+      "id": 4
+    },
+    {
+      "title": "Marvel Filmleri",
+      "url": "https://...",
+      "categoryId": 6,
+      "description": "İzle :O",
+      "userId": 2,
+      "createdAt": "2022-07-13T20:59:53.491Z",
+      "id": 5
+    },
+    {
+      "title": "Marvel",
+      "url": "marvel",
+      "categoryId": 6,
+      "description": ":P",
+      "userId": 2,
+      "createdAt": "2022-07-13T21:01:02.075Z",
+      "id": 6
+    }
+  ],
+  "categories": [
+    {
+      "name": "Vue.js",
+      "id": 1
+    },
+    {
+      "name": "React.js",
+      "id": 2
+    },
+    {
+      "name": "Frontend",
+      "id": 3
+    },
+    {
+      "name": "Backend",
+      "id": 4
+    },
+    {
+      "name": "Cloud",
+      "id": 5
+    },
+    {
+      "name": "Social",
+      "id": 6
+    }
+  ]
+}

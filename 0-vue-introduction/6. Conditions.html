@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="app" class="container">
+        <button class="btn btn-sm btn-primary" @click="showContainer = !showContainer">
+            Aç / Kapat
+        </button>
+        <h1 class="text-danger" v-if="!showContainer">Başlangıçta gözükecek</h1>
+        <h1 class="text-primary" v-else>Sonra gözükecek</h1>
+        <hr />
+        <h1 :class="counterBoxClass">{{counter}}</h1>
+        <button class="btn btn-sm btn-success" @click="counter++">Arttır</button>
+        <button class="btn btn-sm btn-danger" @click="counter--">Azalt</button>
+        <p v-if="counter < 0">Counter Negatif</p>
+        <p v-else-if="counter > 0">Counter Pozitif</p>
+        <p v-else>Counter 0</p>
+        <!-- <p>Counter {{ counter > 0 ? 'Pozitif':(counter < 0 ? 'Negatif' : '0' )}}</p> -->
+        <hr>
+        <p v-show="counter < 0">Counter Negatif</p>
+        <p v-show="counter > 0">Counter Pozitif</p>
+        <p v-show="counter == 0">Counter 0</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.min.js"></script> -->
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    showContainer: false,
+                    counter: 0,
+                };
+            },
+            computed: {
+                counterBoxClass() {
+                    return { 'bg-success text-white': this.counter > 0, 'bg-danger text-white': this.counter < 0 }
+                }
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
